@@ -18,5 +18,5 @@ public class Square {
     }
 
     // methods
-    public char GetSquareStatus() { return status.GetCharacter(); }
+    protected char GetSquareStatus() { return status.GetCharacter(); }
 }
