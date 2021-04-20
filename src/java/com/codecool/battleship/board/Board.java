@@ -21,4 +21,8 @@ public class Board {
             }
         }
     }
+
+    public Square[][] getOcean() {
+        return ocean;
+    }
 }

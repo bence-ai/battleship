@@ -9,7 +9,9 @@ public enum SquareStatus {
     SHIP ('O'),
     MISS ('X'),
     EMPTY ('.'),
+    SUNK ('@'),
     HIT ('#');
+
 
     SquareStatus(char displayCharacter) { this.displayCharacter = displayCharacter; }
 
