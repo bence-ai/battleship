@@ -12,4 +12,13 @@ public class Square {
     }
 
     public char GetSquareStatus() { return status.GetCharacter(); }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 }
+
