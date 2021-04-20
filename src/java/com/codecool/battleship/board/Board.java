@@ -22,7 +22,19 @@ public class Board {
         }
     }
 
-    public Square[][] getOcean() {
-        return ocean;
+    /**
+     * Function that checks if placement of ship is acceptable.
+     * @param startX: Leftmost X coordinate of ship
+     * @param startY: Topmost Y coordinate of ship
+     * @param endX: Rightmost X coordinate of ship
+     * @param endY: Bottom Y coordinate of ship
+     * @return false if ship cannot be legally placed at given coordinates, otherwise true
+     */
+    protected boolean isPlacementOkay(int startX, int startY, int endX, int endY) {
+        for (int i = startX - 1; i <= endX + 1; i++)
+            for (int j = startY - 1; j <= endY + 1; j++)
+                if (ocean[i][j].GetSquareStatus() != Square._EmptyCharacter)
+                    return false;
+        return true;
     }
 }

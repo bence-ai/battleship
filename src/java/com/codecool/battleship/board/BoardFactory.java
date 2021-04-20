@@ -9,10 +9,8 @@ public class BoardFactory {
         Random rand = new Random();
         int verticalOrHorizontal = rand.nextInt(2);
         if (verticalOrHorizontal == 0) {
-
+            return null;
         }
-
-
 
     return null; //this is under construction :)
     }
