@@ -6,10 +6,10 @@ package java.com.codecool.battleship.board;
  */
 public enum SquareStatus {
     // Statuses
-    SHIP ('O'),
-    MISS ('X'),
-    EMPTY ('.'),
-    HIT ('#');
+    SHIP (Square._ShipCharacter),
+    MISS (Square._MissCharacter),
+    EMPTY (Square._EmptyCharacter),
+    HIT (Square._HitCharacter);
 
     SquareStatus(char displayCharacter) { this.displayCharacter = displayCharacter; }
 
