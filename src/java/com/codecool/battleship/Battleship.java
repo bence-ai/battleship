@@ -4,21 +4,22 @@ import java.com.codecool.battleship.console.Display;
 import java.com.codecool.battleship.console.Input;
 
 public class Battleship {
-    private static void main(String[] args) {
-        Display display = new Display();
-        Input validateInput = new Input();
-        Player playerOne;
-        Player playerTwo;
+    Display display = new Display();
+    Input input = new Input();
+    Player playerOne;
+    Player playerTwo;
+
+    public void play() {
 
         while (true) {
             display.printMenu();
-            int mode = validateInput.modeSelect();
+            int mode = input.modeSelect();
             if (mode == 0) {
-                System.exit(0);
+                return;
             }
 
             display.printSize();
-            int size = validateInput.sizeSelect();
+            int size = input.sizeSelect();
             if (size == 0) {
                 continue;
             }
@@ -30,14 +31,14 @@ public class Battleship {
             }
 
             display.setName();
-            String name = validateInput.isValidName();
+            String name = input.isValidName();
             playerOne = new Player(size);
             playerOne.setName(name);
 
 
             if (mode == 1) {
                 display.setName();
-                String nameTwo = validateInput.isValidName();
+                String nameTwo = input.isValidName();
                 playerTwo = new Player(size);
                 playerTwo.setName(nameTwo);
             } else {
