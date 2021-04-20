@@ -11,14 +11,20 @@ import java.util.List;
  * Player class has Square[][] board, String name, List<Ship> ships.
  */
 public class Player {
-    public Square[][] board;
+    private Board board;
     public final String name;
     List<Ship> ships = new ArrayList<Ship>();
 
-    public Player(String name) {
-        this.name = name;
+    public Player(int size) {
+        this.board = new Board(size);
+    }
+  
+    public String getName() {
+        return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
 
     /**
      * Player shoots, and change the shooted Square status.
