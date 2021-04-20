@@ -26,4 +26,5 @@ public class Square {
 
     // methods
     public char GetSquareStatus() { return status.GetCharacter(); }
+    public void SetSquareStatus( SquareStatus status ) { this.status = status; }
 }
