@@ -1,8 +1,7 @@
-package java.com.codecool.battleship.board;
+package com.codecool.battleship.board;
 
-import java.com.codecool.battleship.Player;
+import com.codecool.battleship.Player;
 import java.util.Random;
-import java.util.Scanner;
 
 public class BoardFactory {
     public Board randomPlacement(Player player) {

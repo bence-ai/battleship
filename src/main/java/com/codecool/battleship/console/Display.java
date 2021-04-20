@@ -1,7 +1,7 @@
-package java.com.codecool.battleship.console;
+package com.codecool.battleship.console;
 
-import java.com.codecool.battleship.Player;
-import java.com.codecool.battleship.board.Square;
+import com.codecool.battleship.Player;
+import com.codecool.battleship.board.Square;
 
 public class Display {
     public void printMenu() {
@@ -32,7 +32,7 @@ public class Display {
         for (Square[] col: ocean) {
             board.append("\n").append(numbers[numberIndex++]);
             for (Square cell: col) {
-                board.append(" ").append(cell.GetSquareStatus()).append(" ");
+                board.append(" ").append(cell.getSquareStatus()).append(" ");
             }
         }
 

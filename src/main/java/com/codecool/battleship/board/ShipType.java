@@ -1,4 +1,4 @@
-package java.com.codecool.battleship.board;
+package com.codecool.battleship.board;
 
 /**
  * Enum that defines the types of ships
@@ -11,9 +11,13 @@ public enum ShipType {
     SUBMARINE (4),
     DESTROYER (5);
 
-    ShipType(int length) { this.length = length; }
+    ShipType(int length) {
+        this.length = length;
+    }
 
     // Number of Square objects to set to "ship" status when a ship of this type is placed
     private final int length;
-    protected int GetLength() { return length; }
+    protected int GetLength() {
+        return length;
+    }
 }

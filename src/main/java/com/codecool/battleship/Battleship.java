@@ -1,7 +1,7 @@
-package java.com.codecool.battleship;
+package com.codecool.battleship;
 
-import java.com.codecool.battleship.console.Display;
-import java.com.codecool.battleship.console.Input;
+import com.codecool.battleship.console.Display;
+import com.codecool.battleship.console.Input;
 
 public class Battleship {
     Display display = new Display();
@@ -9,8 +9,7 @@ public class Battleship {
     Player playerOne;
     Player playerTwo;
 
-    public void play() {
-
+    public void start() {
         while (true) {
             display.printMenu();
             int mode = input.modeSelect();
@@ -32,15 +31,12 @@ public class Battleship {
 
             display.setName();
             String name = input.isValidName();
-            playerOne = new Player(size);
-            playerOne.setName(name);
-
+            playerOne = Player.withBoardSize(name, size);
 
             if (mode == 1) {
                 display.setName();
                 String nameTwo = input.isValidName();
-                playerTwo = new Player(size);
-                playerTwo.setName(nameTwo);
+                playerTwo = Player.withBoardSize(nameTwo, size);
             } else {
                 if (size == 5) {
                     playerTwo = new ComputerEasy(size);
@@ -50,6 +46,8 @@ public class Battleship {
                     playerTwo = new ComputerHard(size);
                 }
             }
+
+
         }
     }
 }

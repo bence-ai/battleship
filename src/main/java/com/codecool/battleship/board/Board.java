@@ -1,4 +1,4 @@
-package java.com.codecool.battleship.board;
+package com.codecool.battleship.board;
 
 /**
  * Class that encapsulates a player board
@@ -33,7 +33,7 @@ public class Board {
     protected boolean isPlacementOkay(int startX, int startY, int endX, int endY) {
         for (int i = startX - 1; i <= endX + 1; i++)
             for (int j = startY - 1; j <= endY + 1; j++)
-                if (ocean[i][j].GetSquareStatus() != Square._EmptyCharacter)
+                if (ocean[i][j].getSquareStatus() != SquareStatus.EMPTY.getCharacter())
                     return false;
         return true;
     }

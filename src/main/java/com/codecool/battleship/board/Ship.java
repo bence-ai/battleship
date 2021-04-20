@@ -1,4 +1,4 @@
-package java.com.codecool.battleship.board;
+package com.codecool.battleship.board;
 
 import java.util.List;
 
