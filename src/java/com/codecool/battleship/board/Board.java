@@ -6,7 +6,7 @@ package java.com.codecool.battleship.board;
  * operate it
  */
 public class Board {
-    private Square[][] ocean;
+    private final Square[][] ocean;
 
     public Board(int sideLength) {
         ocean = new Square[sideLength][sideLength];
