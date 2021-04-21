@@ -37,7 +37,7 @@ public class Player {
 //        if (board.isShootOkay()) {
 //            board.markShoot();
 //            break;
-        }
+
 
 
     }
