@@ -26,7 +26,7 @@ public class Board {
     }
 
     /**
-     * Function that checks if placement of ship is acceptable.
+     * Checks if placement of ship is acceptable.
      * @param startX: Leftmost X coordinate of ship
      * @param startY: Topmost Y coordinate of ship
      * @param endX: Rightmost X coordinate of ship
@@ -34,17 +34,26 @@ public class Board {
      * @return false if ship cannot be legally placed at given coordinates, otherwise true
      */
     public boolean isPlacementOkay(int startX, int startY, int endX, int endY) {
-        //TODO: Placement logic
-        List<Square> tiles = collectShipTiles(startX, startY, endX, endY);
-        //TODO: don't allow ship placement next to another ship
-        for (Square tile : tiles) {
-            if (tile.getSquareStatus() != SquareStatus.EMPTY) {
-                return false;
+        int minX = Math.max(startX - 1, 0);
+        int minY = Math.max(startY - 1, 0);
+        int maxX = Math.min(endX + 1, this.ocean.length - 1);
+        int maxY = Math.min(endY + 1, this.ocean.length - 1);
+        for (int i = minX; i <= maxX + 1; i++) {
+            for (int j = minY - 1; j <= maxY + 1; j++) {
+                if (ocean[i][j].GetSquareStatus().getCharacter() != SquareStatus.EMPTY.getCharacter()) return false;
             }
         }
         return true;
     }
 
+    /**
+     * Collects all tiles a ship will occupy.
+     * @param startX: Leftmost X coordinate of ship
+     * @param startY: Topmost coordinate of ship
+     * @param endX: Rightmost coordinate of ship
+     * @param endY: Bottom coordinate of ship
+     * @return List<Square> containing tiles ship overlaps
+     */
     public List<Square> collectShipTiles(int startX, int startY, int endX, int endY) {
         List<Square> tiles = new ArrayList<>();
         for (int i = startX; i <= endX; i++) {
@@ -66,11 +75,22 @@ public class Board {
 
 
     public boolean isShootOkay(int x, int y) {
-        return true;
+        if (ocean[x][y].GetSquareStatus() == SquareStatus.EMPTY || ocean[x][y].GetSquareStatus() == SquareStatus.SHIP) {
+            return true;
+        }
+        return false;
     }
 
     public void markShoot(int x, int y) {
+        if (ocean[x][y].GetSquareStatus() == SquareStatus.EMPTY) {
+            ocean[x][y].SetSquareStatus(SquareStatus.MISS);
+        } else if (ocean[x][y].GetSquareStatus() == SquareStatus.SHIP) {
+            ocean[x][y].SetSquareStatus(SquareStatus.HIT);
+        }
+    }
 
+    public Square[][] getOcean() {
+        return ocean;
     }
 
     @Override
@@ -86,7 +106,7 @@ public class Board {
         for (Square[] col: ocean) {
             board.append("\n").append(numbers[numberIndex++]);
             for (Square cell: col) {
-                board.append(" ").append(cell.getSquareStatus()).append(" ");
+                board.append(" ").append(cell.GetSquareStatus()).append(" ");
             }
         }
 

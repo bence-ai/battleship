@@ -18,19 +18,11 @@ public class Square {
     }
 
     // methods
-    public SquareStatus getSquareStatus() {
-        return status;
-    }
+    public SquareStatus GetSquareStatus() { return status; }
 
-    public void SetSquareStatus( SquareStatus status ) {
-        this.status = status;
-    }
+    public void SetSquareStatus( SquareStatus status ) { this.status = status; }
 
-    public int getY() {
-        return y;
-    }
+    public int getY() { return y; }
 
-    public int getX() {
-        return x;
-    }
+    public int getX() { return x; }
 }

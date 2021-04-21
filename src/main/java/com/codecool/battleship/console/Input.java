@@ -1,10 +1,13 @@
 package com.codecool.battleship.console;
 
+import java.lang.reflect.Type;
 import java.util.Scanner;
 
 public class Input {
     private Scanner input = new Scanner(System.in);
     private final Display display = new Display();
+
+    // public int[] selectTarget(Player enemy) {} // TODO
 
     public int modeSelect() {
         while (true) {
@@ -15,7 +18,7 @@ public class Input {
                     return validInt;
                 }
             }
-            display.error("[Valid number between 0-2]");
+            display.error("[Must be an integer between 0-2]");
         }
     }
 
@@ -28,7 +31,7 @@ public class Input {
                     return validInt;
                 }
             } else {
-                display.error("[Valid number between 0-3]");
+                display.error("[Must be an integer between 0-3]");
             }
         }
     }
@@ -39,7 +42,7 @@ public class Input {
             if (name.length() < 16 && name.length() > 1) {
                 return name;
             } else {
-                display.error("[Max 15 characters long!]");
+                display.error("[Name cannot be longer than 15 characters!]");
             }
         }
     }
@@ -49,7 +52,7 @@ public class Input {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            display.error("Not a valid number!");
+            display.error("Integer expected");
             return false;
         }
         return true;
