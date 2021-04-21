@@ -27,10 +27,6 @@ public class Player {
         return new Player(board, name);
     }
 
-    public static Board getBoard() {
-        return board;
-    }
-
     public String getName() {
         return name;
     }
@@ -57,10 +53,16 @@ public class Player {
      * Check that player still have at least one Square ship.
      */
     public boolean isAlive() {
-//        for (Ship ship: ships) {
-//            // Need isAlive or something function in Ship class, what check the ship all tiles status and return true if ship.
-//            if (ship.isAlive()) return true;
-//        }
+        for (Ship ship: ships) {
+            // Need isAlive or something function in Ship class, what check the ship all tiles status and return true if ship.
+            if (ship.isAlive()) {
+                return true;
+            }
+        }
         return false;
+    }
+
+    public String boardToString() {
+        return board.toString();
     }
 }
