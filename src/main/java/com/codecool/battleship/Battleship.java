@@ -49,6 +49,9 @@ public class Battleship {
                     playerTwo = new ComputerHard(size);
                 }
             }
+
+            Game game = new Game(playerOne, playerTwo);
+            game.play();
         }
     }
 }

@@ -29,11 +29,11 @@ public class Game {
 
     public void play() {
         while (true) {
-//            display.printBoard(opponent.board.toString());
+            display.printBoard(opponent);
             display.printRound(player);
             player.shoot(opponent.board);
             try {
-//                display.printBoard(opponent.board.toString());
+                display.printBoard(opponent);
                 display.getReady(opponent);
                 TimeUnit.SECONDS.sleep(3);
             } catch (InterruptedException e){
