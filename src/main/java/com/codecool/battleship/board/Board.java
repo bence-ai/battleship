@@ -26,7 +26,7 @@ public class Board {
     }
 
     /**
-     * Function that checks if placement of ship is acceptable.
+     * Checks if placement of ship is acceptable.
      * @param startX: Leftmost X coordinate of ship
      * @param startY: Topmost Y coordinate of ship
      * @param endX: Rightmost X coordinate of ship
@@ -34,21 +34,30 @@ public class Board {
      * @return false if ship cannot be legally placed at given coordinates, otherwise true
      */
     public boolean isPlacementOkay(int startX, int startY, int endX, int endY) {
-        //TODO: Placement logic
-        List<Square> tiles = collectShipTiles(startX, startY, endX, endY);
-        //TODO: don't allow ship placement next to another ship
-        for (Square tile : tiles) {
-            if (tile.getSquareStatus() != SquareStatus.EMPTY) {
-                return false;
+        int minX = Math.max(startX - 1, 0);
+        int minY = Math.max(startY - 1, 0);
+        int maxX = Math.min(endX + 1, this.ocean.length - 1);
+        int maxY = Math.min(endY + 1, this.ocean.length - 1);
+        for (int i = minX; i <= maxX + 1; i++) {
+            for (int j = minY - 1; j <= maxY + 1; j++) {
+                if (ocean[i][j].GetSquareStatus() != SquareStatus.EMPTY.getCharacter()) return false;
             }
         }
         return true;
     }
 
+    /**
+     * Collects all tiles a ship will occupy.
+     * @param startX: Leftmost X coordinate of ship
+     * @param startY: Topmost coordinate of ship
+     * @param endX: Rightmost coordinate of ship
+     * @param endY: Bottom coordinate of ship
+     * @return List<Square> containing tiles ship overlaps
+     */
     public List<Square> collectShipTiles(int startX, int startY, int endX, int endY) {
         List<Square> tiles = new ArrayList<>();
-        for (int i = startX - 1; i <= endX + 1; i++) {
-            for (int j = startY - 1; j <= endY + 1; j++) {
+        for (int i = startX; i <= endX; i++) {
+            for (int j = startY; j <= endY; j++) {
                 tiles.add(this.ocean[i][j]);
             }
         }
