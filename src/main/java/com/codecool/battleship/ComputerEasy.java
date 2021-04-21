@@ -2,6 +2,7 @@ package com.codecool.battleship;
 
 import com.codecool.battleship.board.Board;
 import com.codecool.battleship.board.Ship;
+
 import java.util.List;
 
 public class ComputerEasy extends ComputerPlayer {
