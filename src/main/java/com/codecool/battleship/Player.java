@@ -12,7 +12,7 @@ import java.util.List;
 public class Player {
     protected Board board;
     protected String name;
-    List<Ship> ships = new ArrayList<Ship>();
+    List<Ship> ships = new ArrayList<>();
 
     public Player(Board board, String name) {
         this.board = board;
@@ -29,8 +29,8 @@ public class Player {
         return name;
     }
     /**
-     * Player shoots, and change the shooted Square status.
-     * TODO: Validation should be in the Board object, here just the shoot itself!
+     * Player shoots, and change the shot Square status.
+     * TODO: Validation should be in the Board object, here just the shot itself!
      */
     public void shoot(List<Ship> enemyShips) {
 //        Scanner shooting = new Scanner(System.in);
