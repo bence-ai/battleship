@@ -27,11 +27,6 @@ public class Game {
         opponent = temp;
     }
 
-<<<<<<< HEAD
-    private void gameOver(String name) {
-        System.out.println(name + " is the winner!");
-=======
-
     public void play() {
         while (true) {
 //            display.printBoard(opponent.board.toString());
@@ -50,10 +45,5 @@ public class Game {
 
         }
         display.printWinner(player);
->>>>>>> e085b70270e47a6c3c329169a090824318d338ab
     }
-
-
-
-
 }

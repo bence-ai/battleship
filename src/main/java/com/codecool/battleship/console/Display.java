@@ -2,7 +2,6 @@ package com.codecool.battleship.console;
 
 import com.codecool.battleship.Player;
 import com.codecool.battleship.board.ShipType;
-import com.codecool.battleship.board.Square;
 
 public class Display {
     public void printMenu() {
@@ -22,21 +21,7 @@ public class Display {
 
     public void printBoard(Player player) {
         clearScreen();
-        StringBuilder board = new StringBuilder("  ");
-        String[] letters = {" A ", " B ", " C ", " D ", " E ", " F ", " G ", " H ", " I "};
-        String[] numbers = {" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9"};
-
-        for (int i = 0; i < Player.getBoard().getOcean().length; i++) {
-            board.append(letters[i]);
-        }
-        int numberIndex = 0;
-        for (Square[] col: Player.getBoard().getOcean()) {
-            board.append("\n").append(numbers[numberIndex++]);
-            for (Square cell: col) {
-                board.append(" ").append(cell.GetSquareStatus()).append(" ");
-            }
-        }
-        System.out.println(board);
+        System.out.println(player.boardToString());
     }
 
     public void printRound(Player player) {

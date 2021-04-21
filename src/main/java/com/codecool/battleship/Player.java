@@ -61,4 +61,8 @@ public class Player {
         }
         return false;
     }
+
+    public String boardToString() {
+        return board.toString();
+    }
 }
