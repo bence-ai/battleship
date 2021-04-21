@@ -76,4 +76,13 @@ public class Input {
             }
         }
     }
+
+    public String directionInput() {
+        while (true) {
+            String direction = input.nextLine();
+            if ("v".equals(direction) || "V".equals(direction)) return "v";
+            if ("h".equals(direction) || "H".equals(direction)) return "h";
+            display.error("Not a valid direction! [v(vertical) or h(horizontal)]");
+        }
+    }
 }

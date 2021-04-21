@@ -64,6 +64,16 @@ public class Board {
         return tiles;
     }
 
+    public void setShip(int startX, int startY, int endX, int endY) {
+        for (int i = startX; i <= endX; i++) {
+            for (int j = startY; j <= endY; j++) {
+                this.ocean[i][j].SetSquareStatus(SquareStatus.SHIP);
+            }
+        }
+    }
+
+
+
     public boolean isShootOkay(int x, int y) {
         if (ocean[x][y].GetSquareStatus() == SquareStatus.EMPTY || ocean[x][y].GetSquareStatus() == SquareStatus.SHIP) {
             return true;
@@ -81,5 +91,25 @@ public class Board {
 
     public Square[][] getOcean() {
         return ocean;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder board = new StringBuilder("  ");
+        String[] letters = {" A ", " B ", " C ", " D ", " E ", " F ", " G ", " H ", " I "};
+        String[] numbers = {" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9"};
+
+        for (int i = 0; i < ocean.length; i++) {
+            board.append(letters[i]);
+        }
+        int numberIndex = 0;
+        for (Square[] col: ocean) {
+            board.append("\n").append(numbers[numberIndex++]);
+            for (Square cell: col) {
+                board.append(" ").append(cell.GetSquareStatus()).append(" ");
+            }
+        }
+
+        return board.toString();
     }
 }

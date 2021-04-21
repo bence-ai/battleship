@@ -1,6 +1,7 @@
 package com.codecool.battleship;
 
 import com.codecool.battleship.board.Board;
+import com.codecool.battleship.board.BoardFactory;
 import com.codecool.battleship.board.Ship;
 import com.codecool.battleship.console.Input;
 
@@ -22,8 +23,12 @@ public class Player {
     }
 
     public static Player withBoardSize(String name, int size) {
-        Board board = new Board(size);
+        Board board = BoardFactory.manualPlacement(size);
         return new Player(board, name);
+    }
+
+    public static Board getBoard() {
+        return board;
     }
 
     public String getName() {

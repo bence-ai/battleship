@@ -18,7 +18,7 @@ public enum SquareStatus {
     // Character representation of statuses
     // Accessed through Square.GetSquareStatus()
     private final char displayCharacter;
-    protected char getCharacter() {
+    public char getCharacter() {
         return displayCharacter;
     }
 }
