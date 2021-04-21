@@ -46,8 +46,6 @@ public class Battleship {
                     playerTwo = new ComputerHard(size);
                 }
             }
-
-
         }
     }
 }

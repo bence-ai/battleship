@@ -18,8 +18,8 @@ public class Square {
     }
 
     // methods
-    public char getSquareStatus() {
-        return status.getCharacter();
+    public SquareStatus getSquareStatus() {
+        return status;
     }
 
     public void SetSquareStatus( SquareStatus status ) {

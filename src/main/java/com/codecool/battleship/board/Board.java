@@ -1,5 +1,8 @@
 package com.codecool.battleship.board;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Class that encapsulates a player board
  * and houses the functions necessary to
@@ -30,11 +33,25 @@ public class Board {
      * @param endY: Bottom Y coordinate of ship
      * @return false if ship cannot be legally placed at given coordinates, otherwise true
      */
-    protected boolean isPlacementOkay(int startX, int startY, int endX, int endY) {
-        for (int i = startX - 1; i <= endX + 1; i++)
-            for (int j = startY - 1; j <= endY + 1; j++)
-                if (ocean[i][j].getSquareStatus() != SquareStatus.EMPTY.getCharacter())
-                    return false;
+    public boolean isPlacementOkay(int startX, int startY, int endX, int endY) {
+        //TODO: Placement logic
+        List<Square> tiles = collectShipTiles(startX, startY, endX, endY);
+        //TODO: don't allow ship placement next to another ship
+        for (Square tile : tiles) {
+            if (tile.getSquareStatus() != SquareStatus.EMPTY) {
+                return false;
+            }
+        }
         return true;
+    }
+
+    public List<Square> collectShipTiles(int startX, int startY, int endX, int endY) {
+        List<Square> tiles = new ArrayList<>();
+        for (int i = startX - 1; i <= endX + 1; i++) {
+            for (int j = startY - 1; j <= endY + 1; j++) {
+                tiles.add(this.ocean[i][j]);
+            }
+        }
+        return tiles;
     }
 }
