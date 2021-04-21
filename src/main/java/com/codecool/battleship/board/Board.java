@@ -55,6 +55,16 @@ public class Board {
         return tiles;
     }
 
+    public void setShip(int startX, int startY, int endX, int endY) {
+        for (int i = startX; i <= endX; i++) {
+            for (int j = startY; j <= endY; j++) {
+                this.ocean[i][j].SetSquareStatus(SquareStatus.SHIP);
+            }
+        }
+    }
+
+
+
     public boolean isShootOkay(int x, int y) {
         return true;
     }

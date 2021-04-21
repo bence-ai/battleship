@@ -1,6 +1,7 @@
 package com.codecool.battleship.console;
 
 import com.codecool.battleship.Player;
+import com.codecool.battleship.board.ShipType;
 
 public class Display {
     public void printMenu() {
@@ -40,5 +41,13 @@ public class Display {
     public void error(String message) {
         System.out.println(message);
         System.out.println("Try again: ");
+    }
+
+    public void askCoordinate(ShipType ship) {
+        System.out.println("Please provide your " + ship.getLength() + " long ship start coordinate");
+    }
+
+    public void askDirection() {
+        System.out.println("Vertical or horizontal? ");
     }
 }
