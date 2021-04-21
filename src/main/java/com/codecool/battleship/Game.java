@@ -34,7 +34,7 @@ public class Game {
 //            isPlayerOne = !isPlayerOne;
 //        }
 //    }
-    //
+
     private void gameOver(String name) {
         System.out.println(name + " is the winner!");
     }

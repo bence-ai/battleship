@@ -47,11 +47,19 @@ public class Board {
 
     public List<Square> collectShipTiles(int startX, int startY, int endX, int endY) {
         List<Square> tiles = new ArrayList<>();
-        for (int i = startX - 1; i <= endX + 1; i++) {
-            for (int j = startY - 1; j <= endY + 1; j++) {
+        for (int i = startX; i <= endX; i++) {
+            for (int j = startY; j <= endY; j++) {
                 tiles.add(this.ocean[i][j]);
             }
         }
         return tiles;
+    }
+
+    public boolean isShootOkay(int x, int y) {
+        return true;
+    }
+
+    public void markShoot(int x, int y) {
+
     }
 }
