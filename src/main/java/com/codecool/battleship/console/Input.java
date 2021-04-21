@@ -1,10 +1,13 @@
 package com.codecool.battleship.console;
 
+import java.lang.reflect.Type;
 import java.util.Scanner;
 
 public class Input {
-    Scanner input = new Scanner(System.in);
-    Display display = new Display();
+    private Scanner input = new Scanner(System.in);
+    private final Display display = new Display();
+
+    // public int[] selectTarget(Player enemy) {} // TODO
 
     public int modeSelect() {
         while (true) {
@@ -15,7 +18,7 @@ public class Input {
                     return validInt;
                 }
             }
-            display.error("[Valid number between 0-2]");
+            display.error("[Must be an integer between 0-2]");
         }
     }
 
@@ -28,7 +31,7 @@ public class Input {
                     return validInt;
                 }
             } else {
-                display.error("[Valid number between 0-3]");
+                display.error("[Must be an integer between 0-3]");
             }
         }
     }
@@ -39,19 +42,38 @@ public class Input {
             if (name.length() < 16 && name.length() > 1) {
                 return name;
             } else {
-                display.error("[Max 15 characters long!]");
+                display.error("[Name cannot be longer than 15 characters!]");
             }
         }
     }
 
-    public boolean isValidInteger(String input) {
+    private boolean isValidInteger(String input) {
         if (input == null) { return false; }
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            display.error("Not a valid number!");
+            display.error("Integer expected");
             return false;
         }
         return true;
+    }
+
+    public int[] coordinateInput() {
+        while (true) {
+            String coordinate = input.nextLine();
+            char letter = coordinate.charAt(0);
+            String c2 = coordinate.substring(1);
+            int row = letter - 65;
+            int col;
+            try {
+                col = Integer.parseInt(c2) - 1;
+            } catch (NumberFormatException e) {
+                display.error("Not a valid coordinate!");
+                col = -1;
+            }
+            if (0 <= row && 0 <= col) {
+                return new int[]{row, col};
+            }
+        }
     }
 }

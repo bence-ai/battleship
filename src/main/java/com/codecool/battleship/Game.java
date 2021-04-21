@@ -3,6 +3,8 @@ package com.codecool.battleship;
 import com.codecool.battleship.console.Display;
 import com.codecool.battleship.console.Input;
 
+import java.util.concurrent.TimeUnit;
+
 public class Game {
 
     private Player player;
@@ -27,15 +29,26 @@ public class Game {
 
 
     public void play() {
-        boolean isGame = true;
-        while (isGame) {
+        while (true) {
+//            display.printBoard(opponent.board.toString());
             display.printRound(player);
+            player.shoot(opponent.board);
+            try {
+//                display.printBoard(opponent.board.toString());
+                display.getReady(opponent);
+                TimeUnit.SECONDS.sleep(3);
+            } catch (InterruptedException e){
+                display.error(e.toString());
+            } if (!opponent.isAlive()) {
+                break;
+            } playerChanger();
+
+
         }
+        display.printWinner(player);
     }
 
 
-    private void gameOver(String name) {
-        System.out.println(name + " is the winner!");
-    }
+
 
 }

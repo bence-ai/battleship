@@ -32,7 +32,7 @@ public class Display {
         for (Square[] col: ocean) {
             board.append("\n").append(numbers[numberIndex++]);
             for (Square cell: col) {
-                board.append(" ").append(cell.getSquareStatus()).append(" ");
+                board.append(" ").append(cell.GetSquareStatus()).append(" ");
             }
         }
 
@@ -40,8 +40,12 @@ public class Display {
     }
 
     public void printRound(Player player) {
-        System.out.println(player.getName() + " it's your turn!");
-        System.out.println("Set your move: ");
+        System.out.println(player.getName() + ", it's your turn!");
+        System.out.println("Place your shot: ");
+    }
+
+    public void getReady(Player player) {
+        System.out.println(player.getName()+ " Get ready for your turn!");
     }
 
     public void printWinner(Player player) {

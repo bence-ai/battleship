@@ -11,7 +11,7 @@ public class ComputerEasy extends ComputerPlayer {
 
     // chooses a random square which is empty or a ship and returns its coordinates in an int[] array.
     @Override
-    public void shoot(List<Ship> enemyShips) {
+    public void shoot(Board board) {
 //    ArrayList<Square> nonShotSquares = new ArrayList<>();
 //        for (Square[] squaresRow: ocean) {
 //            for (Square squares: squaresRow) {
