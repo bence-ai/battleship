@@ -1,7 +1,6 @@
 package com.codecool.battleship.console;
 
 import com.codecool.battleship.Player;
-import com.codecool.battleship.board.Square;
 
 public class Display {
     public void printMenu() {
@@ -19,23 +18,8 @@ public class Display {
         System.out.println("NAME CREATION\n\nChoose your name [max 15 characters]: ");
     }
 
-    public void printBoard(Square[][] ocean) {
+    public void printBoard(String board) {
         clearScreen();
-        StringBuilder board = new StringBuilder("  ");
-        String[] letters = {" A ", " B ", " C ", " D ", " E ", " F ", " G ", " H ", " I "};
-        String[] numbers = {" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9"};
-
-        for (int i = 0; i < ocean.length; i++) {
-            board.append(letters[i]);
-        }
-        int numberIndex = 0;
-        for (Square[] col: ocean) {
-            board.append("\n").append(numbers[numberIndex++]);
-            for (Square cell: col) {
-                board.append(" ").append(cell.getSquareStatus()).append(" ");
-            }
-        }
-
         System.out.println(board);
     }
 
