@@ -63,4 +63,12 @@ public class Board {
         }
         return tiles;
     }
+
+    public boolean isShootOkay(int x, int y) {
+        return true;
+    }
+
+    public void markShoot(int x, int y) {
+
+    }
 }

@@ -44,6 +44,10 @@ public class Display {
         System.out.println("Place your shot: ");
     }
 
+    public void getReady(Player player) {
+        System.out.println(player.getName()+ " Get ready for your turn!");
+    }
+
     public void printWinner(Player player) {
         clearScreen();
         System.out.println(player.getName() + " wins!");
