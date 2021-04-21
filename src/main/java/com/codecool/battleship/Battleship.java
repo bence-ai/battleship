@@ -9,6 +9,9 @@ public class Battleship {
     Player playerOne;
     Player playerTwo;
 
+    /**
+     * method starts the application and keeps it runs till the user do not exit
+     */
     public void start() {
         while (true) {
             display.printMenu();

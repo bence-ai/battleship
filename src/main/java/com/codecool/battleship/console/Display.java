@@ -4,11 +4,17 @@ import com.codecool.battleship.Player;
 import com.codecool.battleship.board.ShipType;
 
 public class Display {
+    /**
+     * prints the main menu to the terminal window
+     */
     public void printMenu() {
         clearScreen();
         System.out.println("BATTLESHIP DESTROYER\n\n 1. Player vs. Player\n 2. Player vs. Computer\n 0. Exit");
     }
 
+    /**
+     * prints the main menu to the terminal window
+     */
     public void printSize() {
         clearScreen();
         System.out.println("BOARD SIZE\n\n 1. Small\n 2. Medium\n 3. Large\n 0. Back");

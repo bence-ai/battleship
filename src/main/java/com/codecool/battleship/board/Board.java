@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Board {
     // attributes
-    private Square[][] ocean;
+    private final Square[][] ocean;
 
     // constructor
     public Board(int sideLength) {
@@ -39,7 +39,7 @@ public class Board {
         int maxX = Math.min(endX + 1, this.ocean.length - 1);
         int maxY = Math.min(endY + 1, this.ocean.length - 1);
         for (int i = minX; i <= maxX + 1; i++) {
-            for (int j = minY - 1; j <= maxY + 1; j++) {
+            for (int j = minY; j <= maxY; j++) {
                 if (ocean[i][j].GetSquareStatus().getCharacter() != SquareStatus.EMPTY.getCharacter()) return false;
             }
         }
@@ -75,10 +75,7 @@ public class Board {
 
 
     public boolean isShootOkay(int x, int y) {
-        if (ocean[x][y].GetSquareStatus() == SquareStatus.EMPTY || ocean[x][y].GetSquareStatus() == SquareStatus.SHIP) {
-            return true;
-        }
-        return false;
+        return ocean[x][y].GetSquareStatus() == SquareStatus.EMPTY || ocean[x][y].GetSquareStatus() == SquareStatus.SHIP;
     }
 
     public void markShoot(int x, int y) {
@@ -106,6 +103,7 @@ public class Board {
         for (Square[] col: ocean) {
             board.append("\n").append(numbers[numberIndex++]);
             for (Square cell: col) {
+                if (cell.GetSquareStatus() == SquareStatus.HIT || cell.GetSquareStatus() == SquareStatus.MISS)
                 board.append(" ").append(cell.GetSquareStatus()).append(" ");
             }
         }
