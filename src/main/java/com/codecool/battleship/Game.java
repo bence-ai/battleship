@@ -1,40 +1,39 @@
 package com.codecool.battleship;
 
+import com.codecool.battleship.console.Display;
+import com.codecool.battleship.console.Input;
+
 public class Game {
 
-    private final Player playerOne;
-    private final Player playerTwo;
+    private Player player;
+    private Player opponent;
     private boolean isPlayerOne = true;
+    Display display = new Display();
+    Input input = new Input();
+
+
 
     // Game constructor
     public Game(Player playerOne, Player playerTwo) {
-        this.playerOne = playerOne;
-        this.playerTwo = playerTwo;
+        this.player = playerOne;
+        this.opponent = playerTwo;
     }
 
-//    // Play rounds
-//    public void makesMove() {
-//        boolean isGame = true;
-//
-//        while (isGame) {
-//            if (isPlayerOne) {
-//                playerOne.shoot(playerTwo.board, playerTwo.ships);
-//                if (!playerTwo.isAlive()) {
-//                    gameOver(playerOne.getName());
-//                    isGame = false;
-//                }
-//            }
-//            else {
-//                playerTwo.shoot(playerOne.board, playerOne.ships);
-//                if (!playerOne.isAlive()) {
-//                    gameOver(playerTwo.getName());
-//                    isGame = false;
-//                }
-//            }
-//            isPlayerOne = !isPlayerOne;
-//        }
-//    }
-    //
+    public void playerChanger(){
+        Player temp = player;
+        player = opponent;
+        opponent = temp;
+    }
+
+
+    public void play() {
+        boolean isGame = true;
+        while (isGame) {
+            display.printRound(player);
+        }
+    }
+
+
     private void gameOver(String name) {
         System.out.println(name + " is the winner!");
     }
