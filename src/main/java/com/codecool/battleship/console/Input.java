@@ -1,4 +1,4 @@
-package java.com.codecool.battleship.console;
+package com.codecool.battleship.console;
 
 import java.util.Scanner;
 
@@ -11,7 +11,7 @@ public class Input {
             String mode = input.nextLine();
             if (isValidInteger(mode)) {
                 int validInt = Integer.parseInt(mode);
-                if (validInt < 3 && validInt > 0) {
+                if (validInt < 3 && validInt >= 0) {
                     return validInt;
                 }
             }
@@ -24,11 +24,12 @@ public class Input {
             String mode = input.nextLine();
             if (isValidInteger(mode)) {
                 int validInt = Integer.parseInt(mode);
-                if (validInt < 4 && validInt > 0) {
+                if (validInt < 4 && validInt >= 0) {
                     return validInt;
                 }
+            } else {
+                display.error("[Valid number between 0-3]");
             }
-            display.error("[Valid number between 0-3]");
         }
     }
 
@@ -37,8 +38,9 @@ public class Input {
             String name = input.nextLine();
             if (name.length() < 16 && name.length() > 1) {
                 return name;
+            } else {
+                display.error("[Max 15 characters long!]");
             }
-            display.error("[Max 15 characters long!]");
         }
     }
 
