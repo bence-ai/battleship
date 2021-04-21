@@ -2,6 +2,7 @@ package com.codecool.battleship;
 
 import com.codecool.battleship.board.Board;
 import com.codecool.battleship.board.Ship;
+import com.codecool.battleship.console.Input;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,8 @@ import java.util.List;
 public class Player {
     protected Board board;
     protected String name;
-    List<Ship> ships = new ArrayList<>();
+    List<Ship> ships = new ArrayList<Ship>();
+    Input input = new Input();
 
     public Player(Board board, String name) {
         this.board = board;
@@ -32,14 +34,13 @@ public class Player {
      * TODO: Validation should be in the Board object, here just the shoot itself!
      */
     public void shoot(Board board) {
-//        while (true)
-        // input
-//        if (board.isShootOkay()) {
-//            board.markShoot();
-//            break;
+        while (true) {
+            int[] shootInput = input.coordinateInput();
+            if (board.isShootOkay(shootInput[1], shootInput[0])) {
+                board.markShoot(shootInput[1], shootInput[0]);
+                break;
+            }
         }
-
-
     }
 
     /**
@@ -51,7 +52,10 @@ public class Player {
      * Check that player still have at least one Square ship.
      */
     public boolean isAlive() {
-
+        for (Ship ship: ships) {
+            // Need isAlive or something function in Ship class, what check the ship all tiles status and return true if ship.
+            if (ship.isAlive()) return true;
+        }
         return false;
     }
 }
