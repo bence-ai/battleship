@@ -78,4 +78,8 @@ public class Board {
             ocean[x][y].SetSquareStatus(SquareStatus.HIT);
         }
     }
+
+    public Square[][] getOcean() {
+        return ocean;
+    }
 }
