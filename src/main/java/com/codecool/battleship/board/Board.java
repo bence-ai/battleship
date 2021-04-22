@@ -108,7 +108,7 @@ public class Board {
         }
         int numberIndex = 0;
         for (Square[] col: ocean) {
-            board.append("\n").append(numbers[numberIndex++]);
+            board.append("\n").append(numbers[numberIndex++]).append(" ");
             for (Square cell: col) {
                 if (cell.GetSquareStatus() != SquareStatus.SHIP) {
                     board.append(cell.GetSquareStatus().getCharacter());

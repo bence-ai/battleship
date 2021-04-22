@@ -15,12 +15,12 @@ public abstract class ComputerPlayer extends Player {
             "BC Destructor",
             "Noe Bark"};
 
-    public ComputerPlayer(Board board) {
-        super(board, generateName());
+    public ComputerPlayer(Board board, String name) {
+        super(board, name);
     }
 
     // generates a name form nameList above.
-    private static String generateName() {
+    public static String generateName() {
         int index = (int)(Math.random() * nameList.length);
         return nameList[index];
     }
