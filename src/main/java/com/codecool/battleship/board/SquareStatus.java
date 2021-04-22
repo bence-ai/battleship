@@ -6,11 +6,11 @@ package com.codecool.battleship.board;
  */
 public enum SquareStatus {
     // Statuses
-    SHIP (" ⚓️ "),
-    MISS (" 🌊 "),
+    SHIP (" ⚓"),
+    MISS (" 🌊"),
     EMPTY (" 🕳 "),
-    HIT (" 🔥 "),
-    SUNK (" 💢 ");
+    HIT (" 🔥"),
+    SUNK (" 💢");
 
     SquareStatus(String displayCharacter) {
         this.displayCharacter = displayCharacter;

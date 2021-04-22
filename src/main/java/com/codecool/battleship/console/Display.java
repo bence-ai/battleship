@@ -35,7 +35,7 @@ public class Display {
 
     public void boardPreview(Board board) {
         clearScreen();
-        StringBuilder builder = new StringBuilder("   ");
+        StringBuilder builder = new StringBuilder("  ");
         String[] letters = {"1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣"};
         String[] numbers = {"🅰", "🅱", "🅲", "🅳", "🅴", "🅵", "🅶", "🅷", "🅸"};
 
