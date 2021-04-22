@@ -18,7 +18,7 @@ public class Square {
     }
 
     // methods
-    public char GetGraphicsChar() { return status.getCharacter(); }
+    public String GetGraphicsChar() { return status.getCharacter(); }
 
     public SquareStatus GetSquareStatus() { return status; }
 

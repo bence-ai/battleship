@@ -34,13 +34,19 @@ public class Board {
      * @return false if ship cannot be legally placed at given coordinates, otherwise true
      */
     public boolean isPlacementOkay(int startX, int startY, int endX, int endY) {
+        if (ocean.length <= endX || ocean.length <= endY) {
+            return false;
+        }
+
         int minX = Math.max(startX - 1, 0);
         int minY = Math.max(startY - 1, 0);
         int maxX = Math.min(endX + 1, this.ocean.length - 1);
         int maxY = Math.min(endY + 1, this.ocean.length - 1);
-        for (int i = minX; i <= maxX + 1; i++) {
+        for (int i = minX; i <= maxX; i++) {
             for (int j = minY; j <= maxY; j++) {
-                if (ocean[i][j].GetSquareStatus() != SquareStatus.EMPTY) return false;
+                if (ocean[i][j].GetSquareStatus() != SquareStatus.EMPTY) {
+                    return false;
+                }
             }
         }
         return true;
@@ -93,19 +99,22 @@ public class Board {
 
     @Override
     public String toString() {
-        StringBuilder board = new StringBuilder("  ");
-        String[] letters = {" A ", " B ", " C ", " D ", " E ", " F ", " G ", " H ", " I "};
-        String[] numbers = {" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9"};
+        StringBuilder board = new StringBuilder("   ");
+        String[] letters = {"1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣"};
+        String[] numbers = {"🅰", "🅱", "🅲", "🅳", "🅴", "🅵", "🅶", "🅷", "🅸"};
 
         for (int i = 0; i < ocean.length; i++) {
-            board.append(letters[i]);
+            board.append(" ").append(letters[i]).append(" ");
         }
         int numberIndex = 0;
         for (Square[] col: ocean) {
             board.append("\n").append(numbers[numberIndex++]);
             for (Square cell: col) {
-                if (cell.GetSquareStatus() == SquareStatus.HIT || cell.GetSquareStatus() == SquareStatus.MISS)
-                board.append(" ").append(cell.GetSquareStatus().getCharacter()).append(" ");
+                if (cell.GetSquareStatus() != SquareStatus.SHIP) {
+                    board.append(cell.GetSquareStatus().getCharacter());
+                } else {
+                    board.append(SquareStatus.EMPTY.getCharacter());
+                }
             }
         }
 
