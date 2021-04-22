@@ -13,10 +13,14 @@ public class ComputerHard extends ComputerPlayer  {
         super(board, name);
     }
 
+    // creates ComputerHard instance and place it's ships to it's board
+
     public static Player withBoardSize(String name, int size) {
         Board board = BoardFactory.randomPlacement(size);
         return new ComputerHard(board, name);
     }
+
+    // overrides shoot from ComputerPlayer but if lands a shot to a ship part, it will shoot it until it sinks.
 
     @Override
     public void shoot(Board board) {
@@ -39,7 +43,8 @@ public class ComputerHard extends ComputerPlayer  {
         }board.isShipSunk();
     }
 
-    
+    // overrides basicMove from ComputerPlayer, but uses diagonal searching for higher chance
+
     @Override
     public void basicMove(Board board, ArrayList<Square> sunkList) {
         Random rand = new Random();

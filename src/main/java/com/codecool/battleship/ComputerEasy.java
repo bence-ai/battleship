@@ -11,7 +11,7 @@ public class ComputerEasy extends ComputerPlayer {
         super(board, name);
     }
 
-    // chooses a random square which is empty or a ship and returns its coordinates in an int[] array.
+    // chooses a random square which is empty or a ship and changes its status to miss or hit.
     @Override
     public void shoot(Board board) {
         Random rand = new Random();
@@ -31,6 +31,8 @@ public class ComputerEasy extends ComputerPlayer {
         }
         board.isShipSunk();
     }
+
+    // creates ComputerEasy instance and place it's ships to it's board
 
     public static Player withBoardSize(String name, int size) {
         Board board = BoardFactory.randomPlacement(size);
