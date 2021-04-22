@@ -23,8 +23,9 @@ public class ComputerEasy extends ComputerPlayer {
                 break;
             }
         }
+        board.isShipSunk();
     }
-    
+
     public static Player withBoardSize(String name, int size) {
         Board board = BoardFactory.randomPlacement(size);
         return new ComputerEasy(board, name);

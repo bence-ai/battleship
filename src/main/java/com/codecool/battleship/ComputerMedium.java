@@ -17,15 +17,6 @@ public class ComputerMedium extends ComputerPlayer  {
     public void shoot(Board board) {
         ArrayList<Square> BasicMoveList = new ArrayList<>();
         Random rand = new Random();
-//        while (true) {
-//            for (Square[] squareRows: board.getOcean()) {
-//                for (Square square: squareRows) {
-//                    if (square.GetSquareStatus() != SquareStatus.MISS) {
-//
-//                    }
-//                }
-//            }
-//        }
     }
 
     public static Player withBoardSize(String name, int size) {
