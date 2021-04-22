@@ -104,12 +104,25 @@ public class Board {
         for (Square[] col: ocean) {
             board.append("\n").append(numbers[numberIndex++]);
             for (Square cell: col) {
-                if (cell.GetSquareStatus() == SquareStatus.HIT ||
-                        cell.GetSquareStatus() == SquareStatus.MISS)
-                board.append(" ").append(cell.GetGraphicsChar()).append(" ");
+                if (cell.GetSquareStatus() == SquareStatus.HIT || cell.GetSquareStatus() == SquareStatus.MISS)
+                board.append(" ").append(cell.GetSquareStatus().getCharacter()).append(" ");
             }
         }
 
         return board.toString();
+    }
+
+    /**
+     *Checks the status of the squares on the board, and return true if find SHIP.
+     */
+    public boolean isAlive() {
+        for (Square[] row: ocean) {
+            for (Square cell: row) {
+                if (cell.GetSquareStatus() == SquareStatus.SHIP) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

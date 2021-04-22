@@ -23,13 +23,4 @@ public class Ship {
     public Ship(int startX, int startY, int endX, int endY) {
         // TODO: finish Ship constructor
     }
-
-    public boolean isAlive() {
-        for (Square tile : tiles) {
-            if (tile.GetSquareStatus() == SquareStatus.SHIP) {
-                return true;
-            }
-        }
-        return false;
-    }
 }
