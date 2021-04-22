@@ -70,6 +70,7 @@ public class BoardFactory {
 
         for (ShipType ship: ships) {
             while (true) {
+                display.boardPreview(board);
                 display.askCoordinate(ship);
                 int[] coordinates = input.coordinateInput();
                 display.askDirection();

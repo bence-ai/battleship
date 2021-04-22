@@ -40,7 +40,8 @@ public class Game {
                 display.error(e.toString());
             } if (!opponent.isAlive()) {
                 break;
-            } playerChanger();
+            }
+            playerChanger();
 
 
         }

@@ -104,7 +104,7 @@ public class Board {
             board.append("\n").append(numbers[numberIndex++]);
             for (Square cell: col) {
                 if (cell.GetSquareStatus() == SquareStatus.HIT || cell.GetSquareStatus() == SquareStatus.MISS)
-                board.append(" ").append(cell.GetSquareStatus()).append(" ");
+                board.append(" ").append(cell.GetSquareStatus().getCharacter()).append(" ");
             }
         }
 
