@@ -42,11 +42,11 @@ public class Battleship {
                 playerTwo = Player.withBoardSize(nameTwo, size);
             } else {
                 if (size == 5) {
-                    playerTwo = new ComputerEasy(size);
+                    playerTwo = ComputerEasy.withBoardSize(ComputerPlayer.generateName(), size);
                 } else if (size == 7) {
-                    playerTwo = new ComputerMedium(size);
+                    playerTwo = ComputerMedium.withBoardSize(ComputerPlayer.generateName(), size);
                 } else if (size == 9) {
-                    playerTwo = new ComputerHard(size);
+                    playerTwo = ComputerHard.withBoardSize(ComputerPlayer.generateName(), size);
                 }
             }
 

@@ -83,6 +83,6 @@ public class Display {
     }
 
     public void askDirection() {
-        System.out.println("Vertical or horizontal? ");
+        System.out.println("Vertical or horizontal? [v/h] ");
     }
 }
