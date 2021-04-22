@@ -122,6 +122,13 @@ public class Board {
             }
         }
 
+        for (Ship ship: ships) {
+            board.append("\n");
+            for (Square tile : ship.getTiles()) {
+                board.append(tile.getX()).append(", ").append(tile.getY());
+            }
+        }
+
         return board.toString();
     }
 
