@@ -82,7 +82,11 @@ public class BoardFactory {
                 if (direction.equals("v")) {
                     if (board.isPlacementOkay(coordinates[0], coordinates[1], coordinates[0] + (ship.getLength() - 1), coordinates[1])) {
                         board.setShip(coordinates[0], coordinates[1], coordinates[0] + (ship.getLength() - 1), coordinates[1]);
-                        Ship currentShip = createShip(board, ship, coordinates);
+                        Ship currentShip = new Ship();
+                        int j = coordinates[1];
+                        for (int i = coordinates[0]; i <= coordinates[0] + (ship.getLength() - 1); i++) {
+                            currentShip.addSquare(board.getOcean()[i][j]);
+                        }
                         board.addShip(currentShip);
                         break;
                     }
@@ -91,7 +95,11 @@ public class BoardFactory {
                 }
                 if (board.isPlacementOkay(coordinates[0], coordinates[1], coordinates[0], coordinates[1] + (ship.getLength() - 1))) {
                     board.setShip(coordinates[0], coordinates[1], coordinates[0], coordinates[1] + (ship.getLength() - 1));
-                    Ship currentShip = createShip(board, ship, coordinates);
+                    Ship currentShip = new Ship();
+                    int j = coordinates[0];
+                    for (int i = coordinates[1]; i <= coordinates[1] + (ship.getLength() - 1); i++) {
+                        currentShip.addSquare(board.getOcean()[i][j]);
+                    }
                     board.addShip(currentShip);
                     break;
                 }
