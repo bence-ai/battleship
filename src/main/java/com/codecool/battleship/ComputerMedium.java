@@ -17,6 +17,7 @@ public class ComputerMedium extends ComputerPlayer  {
     @Override
     public void shoot(Board board) {
         Random rand = new Random();
+
         while (true) {
             ArrayList<Square> sunkList = sunkCoordinateException(board);
             ArrayList<Square> predictList = predictionForHit(board);
@@ -28,8 +29,10 @@ public class ComputerMedium extends ComputerPlayer  {
             if (!sunkList.contains(predictList.get(randomIndex))) {
                 if (board.isShootOkay(predictList.get(randomIndex).getX(),predictList.get(randomIndex).getY())){
                     board.markShoot(predictList.get(randomIndex).getX(),predictList.get(randomIndex).getY());
-                    break;
+                } else {
+                    basicMove(board);
                 }
+                break;
             }
         }
     }

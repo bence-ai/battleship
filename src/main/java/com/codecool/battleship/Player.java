@@ -2,11 +2,7 @@ package com.codecool.battleship;
 
 import com.codecool.battleship.board.Board;
 import com.codecool.battleship.board.BoardFactory;
-import com.codecool.battleship.board.Ship;
 import com.codecool.battleship.console.Input;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Player class has Square[][] board, String name, List<Ship> ships.
@@ -14,7 +10,6 @@ import java.util.List;
 public class Player {
     protected Board board;
     protected String name;
-    List<Ship> ships = new ArrayList<>();
     Input input = new Input();
 
     public Player(Board board, String name) {
@@ -24,6 +19,7 @@ public class Player {
 
     public static Player withBoardSize(String name, int size) {
         Board board = BoardFactory.manualPlacement(size);
+
         return new Player(board, name);
     }
 
@@ -41,13 +37,8 @@ public class Player {
                 break;
             }
         }
+        board.isShipSunk();
     }
-
-    /**
-     * Return List<Ship> ships.
-     */
-    public List<Ship> getShips() { return ships; }
-
     /**
      * Check that player still have at least one Square ship.
      */

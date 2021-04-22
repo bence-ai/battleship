@@ -1,5 +1,6 @@
 package com.codecool.battleship.board;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,18 +10,16 @@ import java.util.List;
  */
 public class Ship {
     // attributes
-    private List<Square> tiles;
-
-    // constructor
+    private List<Square> tiles = new ArrayList<>();
 
     /**
      * Ship object type constructor.
-     * @param startX: Leftmost X coordinate of ship
-     * @param startY: Topmost Y coordinate of ship
-     * @param endX: Rightmost X coordinate of ship
-     * @param endY: Bottom Y coordinate of ship
      */
-    public Ship(int startX, int startY, int endX, int endY) {
-        // TODO: finish Ship constructor
+    public void addSquare(Square square) {
+        tiles.add(square);
+    }
+
+    public List<Square> getTiles() {
+        return tiles;
     }
 }
