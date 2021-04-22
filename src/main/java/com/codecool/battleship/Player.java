@@ -1,6 +1,7 @@
 package com.codecool.battleship;
 
 import com.codecool.battleship.board.Board;
+import com.codecool.battleship.board.BoardFactory;
 import com.codecool.battleship.board.Ship;
 import com.codecool.battleship.console.Input;
 
@@ -22,7 +23,7 @@ public class Player {
     }
 
     public static Player withBoardSize(String name, int size) {
-        Board board = new Board(size);
+        Board board = BoardFactory.manualPlacement(size);
         return new Player(board, name);
     }
 
@@ -52,10 +53,16 @@ public class Player {
      * Check that player still have at least one Square ship.
      */
     public boolean isAlive() {
-//        for (Ship ship: ships) {
-//            // Need isAlive or something function in Ship class, what check the ship all tiles status and return true if ship.
-//            if (ship.isAlive()) return true;
-//        }
+        for (Ship ship: ships) {
+            // Need isAlive or something function in Ship class, what check the ship all tiles status and return true if ship.
+            if (ship.isAlive()) {
+                return true;
+            }
+        }
         return false;
+    }
+
+    public String boardToString() {
+        return board.toString();
     }
 }

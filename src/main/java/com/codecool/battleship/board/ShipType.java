@@ -17,7 +17,7 @@ public enum ShipType {
 
     // Number of Square objects to set to "ship" status when a ship of this type is placed
     private final int length;
-    protected int GetLength() {
+    public int getLength() {
         return length;
     }
 }

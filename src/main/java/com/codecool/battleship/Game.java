@@ -27,19 +27,18 @@ public class Game {
         opponent = temp;
     }
 
-
     public void play() {
         while (true) {
-//            display.printBoard(opponent.board.toString());
+            display.printBoard(opponent);
             display.printRound(player);
             player.shoot(opponent.board);
             try {
-//                display.printBoard(opponent.board.toString());
+                display.printBoard(opponent);
                 display.getReady(opponent);
                 TimeUnit.SECONDS.sleep(3);
             } catch (InterruptedException e){
                 display.error(e.toString());
-            } if (!opponent.isAlive()) {
+            } if (opponent.isAlive()) {
                 break;
             } playerChanger();
 
@@ -47,8 +46,4 @@ public class Game {
         }
         display.printWinner(player);
     }
-
-
-
-
 }

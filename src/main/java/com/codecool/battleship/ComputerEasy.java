@@ -1,11 +1,6 @@
 package com.codecool.battleship;
 
 import com.codecool.battleship.board.Board;
-import com.codecool.battleship.board.Ship;
-import com.codecool.battleship.board.Square;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class ComputerEasy extends ComputerPlayer {
@@ -26,6 +21,5 @@ public class ComputerEasy extends ComputerPlayer {
                 break;
             }
         }
-
     }
 }

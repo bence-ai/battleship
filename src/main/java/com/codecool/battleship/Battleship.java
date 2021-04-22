@@ -9,6 +9,9 @@ public class Battleship {
     Player playerOne;
     Player playerTwo;
 
+    /**
+     * method starts the application and keeps it runs till the user do not exit
+     */
     public void start() {
         while (true) {
             display.printMenu();
@@ -24,9 +27,15 @@ public class Battleship {
             }
 
             switch (size) {
-                case 1 -> size = 5;
-                case 2 -> size = 7;
-                case 3 -> size = 9;
+                case 1:
+                    size = 5;
+                    break;
+                case 2:
+                    size = 7;
+                    break;
+                case 3:
+                    size = 9;
+                    break;
             }
 
             display.setName();
@@ -46,6 +55,9 @@ public class Battleship {
                     playerTwo = new ComputerHard(size);
                 }
             }
+
+            Game game = new Game(playerOne, playerTwo);
+            game.play();
         }
     }
 }
