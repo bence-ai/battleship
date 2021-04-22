@@ -77,16 +77,19 @@ public class BoardFactory {
             ships.add(ShipType.CRUISER);
             ships.add(ShipType.BATTLESHIP);
             ships.add(ShipType.SUBMARINE);
-            ships.add(ShipType.BATTLESHIP);
+            ships.add(ShipType.DESTROYER);
         }
 
         for (ShipType ship: ships) {
             while (true) {
                 display.boardPreview(board);
                 display.askCoordinate(ship);
-                int[] coordinates = input.coordinateInput();
-                display.askDirection();
-                String direction = input.directionInput();
+                int[] coordinates = input.coordinateInput(board.getOcean().length);
+                String direction = "v";
+                if (ship.getLength() != 1) {
+                    display.askDirection();
+                    direction = input.directionInput();
+                }
                 if (direction.equals("v")) {
                     if (board.isPlacementOkay(coordinates[0], coordinates[1], coordinates[0] + (ship.getLength() - 1), coordinates[1])) {
                         board.setShip(coordinates[0], coordinates[1], coordinates[0] + (ship.getLength() - 1), coordinates[1]);

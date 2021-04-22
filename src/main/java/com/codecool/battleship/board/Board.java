@@ -103,7 +103,8 @@ public class Board {
 
     @Override
     public String toString() {
-        StringBuilder board = new StringBuilder("  ");
+        int spaces = 30 - ocean.length;
+        StringBuilder board = new StringBuilder("  ").append(" ".repeat(spaces));
         String[] letters = {"1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣"};
         String[] numbers = {"🅰", "🅱", "🅲", "🅳", "🅴", "🅵", "🅶", "🅷", "🅸"};
 
@@ -112,7 +113,7 @@ public class Board {
         }
         int numberIndex = 0;
         for (Square[] col: ocean) {
-            board.append("\n").append(numbers[numberIndex++]).append(" ");
+            board.append("\n").append(" ".repeat(spaces)).append(numbers[numberIndex++]).append(" ");
             for (Square cell: col) {
                 if (cell.GetSquareStatus() != SquareStatus.SHIP) {
                     board.append(cell.GetSquareStatus().getCharacter());
