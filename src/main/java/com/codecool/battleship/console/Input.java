@@ -6,8 +6,6 @@ public class Input {
     private Scanner input = new Scanner(System.in);
     private final Display display = new Display();
 
-    // public int[] selectTarget(Player enemy) {} // TODO
-
     public int modeSelect() {
         while (true) {
             String mode = input.nextLine();
@@ -57,9 +55,13 @@ public class Input {
         return true;
     }
 
-    public int[] coordinateInput() {
+    public int[] coordinateInput(int size) {
         while (true) {
             String coordinate = input.nextLine().toUpperCase();
+            if (coordinate.equals("")) {
+                display.error("Please provide a valid coordinate!");
+                continue;
+            }
             char letter = coordinate.charAt(0);
             String c2 = coordinate.substring(1);
             int row = letter - 65;
@@ -70,10 +72,10 @@ public class Input {
                 display.error("Not a valid coordinate!");
                 col = -1;
             }
-            if (0 <= row && 0 <= col) {
-                System.out.println(row + ", " + col);
+            if (0 <= row && 0 <= col && row < size && col < size) {
                 return new int[]{row, col};
             }
+            display.error("Please provide a valid coordinate!");
         }
     }
 

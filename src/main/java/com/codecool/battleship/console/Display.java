@@ -6,13 +6,33 @@ import com.codecool.battleship.board.ShipType;
 import com.codecool.battleship.board.Square;
 import com.codecool.battleship.board.SquareStatus;
 
+import java.util.concurrent.TimeUnit;
+
 public class Display {
+    public void printLogo() {
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println("         o-o                   o                  o---o      o      ");
+        System.out.println("        |                      |                     /       |      ");
+        System.out.println("         o-o   o-o o  o  oo  o-O o-o o-o o-o       -O-  o  o | o  o ");
+        System.out.println("            | |  | |  | | | |  | |   | | |  |      /    |  | | |  | ");
+        System.out.println("        o--o   o-O o--o o-o- o-o o   o-o o  o     o---o o--o o o--o ");
+        System.out.println("                |                                                  ");
+        System.out.println("                o                                                  ");
+        System.out.println();
+    }
+
     /**
      * prints the main menu to the terminal window
      */
     public void printMenu() {
         clearScreen();
-        System.out.println("Squadron Zulu\n\n [1] Player vs. Player\n [2] Player vs. Computer\n [0] Exit");
+        printLogo();
+        System.out.printf("%48s%n", "[1]   Player vs. Player");
+        System.out.printf("%48s%n", "[2] Player vs. Computer");
+        System.out.printf("%48s%n", "[0]                Exit");
     }
 
     /**
@@ -20,22 +40,31 @@ public class Display {
      */
     public void printSize() {
         clearScreen();
-        System.out.println("BOARD SIZE\n\n [1] Small\n [2] Medium\n [3] Large\n [0] Back");
+        printLogo();
+        System.out.printf("%40s%n", "[1]   Small");
+        System.out.printf("%40s%n", "[2]  Medium");
+        System.out.printf("%40s%n", "[3]   Large");
+        System.out.printf("%40s%n", "[0]    Back");
     }
 
     public void setName() {
         clearScreen();
-        System.out.println("NAME CREATION\n\nChoose your name [max 15 characters]: ");
+        System.out.printf("%40s%n", "NAME CREATION");
+        System.out.println("");
+        System.out.printf("%40s%n", "Choose your name [max 15 characters]:");
     }
 
     public void printBoard(Player player) {
         clearScreen();
+        System.out.println();
+        System.out.println();
         System.out.println(player.boardToString());
     }
 
     public void boardPreview(Board board) {
         clearScreen();
-        StringBuilder builder = new StringBuilder("  ");
+        int spaces = 30 - board.getOcean().length;
+        StringBuilder builder = new StringBuilder("  ").append(" ".repeat(spaces));
         String[] letters = {"1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣"};
         String[] numbers = {"🅰", "🅱", "🅲", "🅳", "🅴", "🅵", "🅶", "🅷", "🅸"};
 
@@ -45,13 +74,14 @@ public class Display {
 
         int numberIndex = 0;
         for (Square[] col: board.getOcean()) {
-            builder.append("\n").append(numbers[numberIndex++]).append(" ");
+            builder.append("\n").append(" ".repeat(spaces)).append(numbers[numberIndex++]).append(" ");
             for (Square cell: col) {
                 if (cell.GetSquareStatus() == SquareStatus.SHIP || cell.GetSquareStatus() == SquareStatus.EMPTY)
                     builder.append(cell.GetSquareStatus().getCharacter());
             }
         }
-
+        System.out.println();
+        System.out.println();
         System.out.println(builder);
     }
 
@@ -66,7 +96,11 @@ public class Display {
 
     public void printWinner(Player player) {
         clearScreen();
-        System.out.println(player.getName() + " wins!");
+        System.out.print("o--o  oo o-O-o o-o     o-o o   o o-o o-o \n");
+        System.out.print("|  | | | | | | |-'     | |  \\ /  |-' |   \n");
+        System.out.print("o--O o-o-o o o o-o     o-o   o   o-o o   \n");
+        System.out.print("   |                                     \n");
+        System.out.print("o--o   " + player.getName() + " wins!");
     }
 
     private void clearScreen() {
@@ -75,14 +109,33 @@ public class Display {
 
     public void error(String message) {
         System.out.println(message);
-        System.out.println("Try again: ");
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e){
+            error(e.toString());
+        }
     }
 
     public void askCoordinate(ShipType ship) {
+        System.out.println();
         System.out.println("Please provide your " + ship.getLength() + " long ship (" + ship.name() + ") start coordinate");
     }
 
     public void askDirection() {
         System.out.println("Vertical or horizontal? [v/h] ");
+    }
+
+    public void exit() {
+        clearScreen();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.print("             o-o             o     o--o           o \n");
+        System.out.print("            o                |     |   |          | \n");
+        System.out.print("            |  -o o-o o-o  o-O     O--o  o  o o-o o \n");
+        System.out.print("            o   | | | | | |  |     |   | |  | |-'   \n");
+        System.out.print("             o-o  o-o o-o  o-o     o--o  o--O o-o O \n");
+        System.out.print("                                            |       \n");
+        System.out.print("                                         o--o       \n");
     }
 }
