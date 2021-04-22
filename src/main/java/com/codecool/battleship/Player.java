@@ -37,6 +37,7 @@ public class Player {
                 break;
             }
         }
+        board.isShipSunk();
     }
     /**
      * Check that player still have at least one Square ship.

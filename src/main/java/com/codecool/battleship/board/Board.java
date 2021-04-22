@@ -81,6 +81,10 @@ public class Board {
     }
 
     public boolean isShootOkay(int x, int y) {
+        if (ocean.length <= x || ocean.length <= y) {
+            return false;
+        }
+
         return ocean[x][y].GetSquareStatus() == SquareStatus.EMPTY ||
                 ocean[x][y].GetSquareStatus() == SquareStatus.SHIP;
     }
@@ -137,5 +141,21 @@ public class Board {
 
     public void addShip(Ship ship) {
         ships.add(ship);
+    }
+
+    public void isShipSunk() {
+        for (Ship ship : ships) {
+            boolean alive = false;
+            for (Square square : ship.getTiles()) {
+                if (square.GetSquareStatus() == SquareStatus.SHIP) {
+                    alive = true;
+                }
+            }
+            if (!alive) {
+                for (Square square : ship.getTiles()) {
+                    square.SetSquareStatus(SquareStatus.SUNK);
+                }
+            }
+        }
     }
 }

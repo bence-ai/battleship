@@ -18,4 +18,8 @@ public class Ship {
     public void addSquare(Square square) {
         tiles.add(square);
     }
+
+    public List<Square> getTiles() {
+        return tiles;
+    }
 }
