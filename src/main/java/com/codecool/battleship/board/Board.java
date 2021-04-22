@@ -104,9 +104,8 @@ public class Board {
         for (Square[] col: ocean) {
             board.append("\n").append(numbers[numberIndex++]);
             for (Square cell: col) {
-                if (cell.GetSquareStatus() == SquareStatus.HIT.getCharacter() ||
-                        cell.GetSquareStatus() == SquareStatus.MISS.getCharacter())
-                board.append(" ").append(cell.GetSquareStatus()).append(" ");
+                if (cell.GetSquareStatus() == SquareStatus.HIT || cell.GetSquareStatus() == SquareStatus.MISS)
+                board.append(" ").append(cell.GetSquareStatus().getCharacter()).append(" ");
             }
         }
 
