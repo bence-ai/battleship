@@ -84,7 +84,6 @@ public class Board {
         if (ocean.length <= x || ocean.length <= y) {
             return false;
         }
-
         return ocean[x][y].GetSquareStatus() == SquareStatus.EMPTY ||
                 ocean[x][y].GetSquareStatus() == SquareStatus.SHIP;
     }
