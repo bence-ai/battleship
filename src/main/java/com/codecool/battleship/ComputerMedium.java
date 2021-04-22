@@ -34,7 +34,7 @@ public class ComputerMedium extends ComputerPlayer  {
                 }
                 break;
             }
-        }
+        } board.isShipSunk();
     }
 
     public ArrayList<Square> sunkCoordinateException(Board board) {
