@@ -1,7 +1,10 @@
 package com.codecool.battleship.console;
 
 import com.codecool.battleship.Player;
+import com.codecool.battleship.board.Board;
 import com.codecool.battleship.board.ShipType;
+import com.codecool.battleship.board.Square;
+import com.codecool.battleship.board.SquareStatus;
 
 public class Display {
     /**
@@ -9,7 +12,7 @@ public class Display {
      */
     public void printMenu() {
         clearScreen();
-        System.out.println("BATTLESHIP DESTROYER\n\n 1. Player vs. Player\n 2. Player vs. Computer\n 0. Exit");
+        System.out.println("Squadron Zulu\n\n [1] Player vs. Player\n [2] Player vs. Computer\n [0] Exit");
     }
 
     /**
@@ -17,7 +20,7 @@ public class Display {
      */
     public void printSize() {
         clearScreen();
-        System.out.println("BOARD SIZE\n\n 1. Small\n 2. Medium\n 3. Large\n 0. Back");
+        System.out.println("BOARD SIZE\n\n [1] Small\n [2] Medium\n [3] Large\n [0] Back");
     }
 
     public void setName() {
@@ -28,6 +31,28 @@ public class Display {
     public void printBoard(Player player) {
         clearScreen();
         System.out.println(player.boardToString());
+    }
+
+    public void boardPreview(Board board) {
+        clearScreen();
+        StringBuilder builder = new StringBuilder("   ");
+        String[] letters = {"1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣"};
+        String[] numbers = {"🅰", "🅱", "🅲", "🅳", "🅴", "🅵", "🅶", "🅷", "🅸"};
+
+        for (int i = 0; i < board.getOcean().length; i++) {
+            builder.append(" ").append(letters[i]).append(" ");
+        }
+
+        int numberIndex = 0;
+        for (Square[] col: board.getOcean()) {
+            builder.append("\n").append(numbers[numberIndex++]).append(" ");
+            for (Square cell: col) {
+                if (cell.GetSquareStatus() == SquareStatus.SHIP || cell.GetSquareStatus() == SquareStatus.EMPTY)
+                    builder.append(cell.GetSquareStatus().getCharacter());
+            }
+        }
+
+        System.out.println(builder);
     }
 
     public void printRound(Player player) {
@@ -54,7 +79,7 @@ public class Display {
     }
 
     public void askCoordinate(ShipType ship) {
-        System.out.println("Please provide your " + ship.getLength() + " long ship start coordinate");
+        System.out.println("Please provide your " + ship.getLength() + " long ship (" + ship.name() + ") start coordinate");
     }
 
     public void askDirection() {
