@@ -38,7 +38,7 @@ public class Game {
                 TimeUnit.SECONDS.sleep(3);
             } catch (InterruptedException e){
                 display.error(e.toString());
-            } if (opponent.isAlive()) {
+            } if (!opponent.isAlive()) {
                 break;
             }
             playerChanger();
