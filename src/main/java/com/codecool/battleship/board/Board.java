@@ -99,19 +99,22 @@ public class Board {
 
     @Override
     public String toString() {
-        StringBuilder board = new StringBuilder("  ");
-        String[] letters = {" A ", " B ", " C ", " D ", " E ", " F ", " G ", " H ", " I "};
-        String[] numbers = {" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9"};
+        StringBuilder board = new StringBuilder("   ");
+        String[] letters = {"1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣"};
+        String[] numbers = {"🅰", "🅱", "🅲", "🅳", "🅴", "🅵", "🅶", "🅷", "🅸"};
 
         for (int i = 0; i < ocean.length; i++) {
-            board.append(letters[i]);
+            board.append(" ").append(letters[i]).append(" ");
         }
         int numberIndex = 0;
         for (Square[] col: ocean) {
             board.append("\n").append(numbers[numberIndex++]);
             for (Square cell: col) {
-                if (cell.GetSquareStatus() == SquareStatus.HIT || cell.GetSquareStatus() == SquareStatus.MISS)
-                board.append(" ").append(cell.GetSquareStatus().getCharacter()).append(" ");
+                if (cell.GetSquareStatus() != SquareStatus.SHIP) {
+                    board.append(cell.GetSquareStatus().getCharacter());
+                } else {
+                    board.append(SquareStatus.EMPTY.getCharacter());
+                }
             }
         }
 
