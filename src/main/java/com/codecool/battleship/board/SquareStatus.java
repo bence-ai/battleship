@@ -6,20 +6,20 @@ package com.codecool.battleship.board;
  */
 public enum SquareStatus {
     // Statuses
-    SHIP ('O'),
-    MISS ('X'),
-    EMPTY ('.'),
-    SUNK ('@'),
-    HIT ('#');
+    SHIP (" ⚓️ "),
+    MISS (" 🌊 "),
+    EMPTY (" 🔵 "),
+    HIT (" 🔥 "),
+    SUNK(" @");
 
-    SquareStatus(char displayCharacter) {
+    SquareStatus(String displayCharacter) {
         this.displayCharacter = displayCharacter;
     }
 
     // Character representation of statuses
     // Accessed through Square.GetSquareStatus()
-    private final char displayCharacter;
-    public char getCharacter() {
+    private final String displayCharacter;
+    public String getCharacter() {
         return displayCharacter;
     }
 }

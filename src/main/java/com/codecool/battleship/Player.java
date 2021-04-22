@@ -32,7 +32,7 @@ public class Player {
     }
     /**
      * Player shoots, and change the shot Square status.
-     * TODO: Validation should be in the Board object, here just the shoot itself!
+     * TODO: Validation should be in the Board object, here just the shot itself!
      */
     public void shoot(Board board) {
         while (true) {
