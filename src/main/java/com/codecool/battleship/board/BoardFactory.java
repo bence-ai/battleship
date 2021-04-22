@@ -35,11 +35,15 @@ public class BoardFactory {
                 if (verticalOrHorizontal == 0) {
                     if (board.isPlacementOkay(coordinates[0], coordinates[1], coordinates[0] + (ship.getLength() - 1), coordinates[1])) {
                         board.setShip(coordinates[0], coordinates[1], coordinates[0] + (ship.getLength() - 1), coordinates[1]);
+                        Ship currentShip = createShip(board, ship, coordinates);
+                        board.addShip(currentShip);
                         break;
                     }
                 }
                 if (board.isPlacementOkay(coordinates[0], coordinates[1], coordinates[0], coordinates[1] + (ship.getLength() - 1))) {
                     board.setShip(coordinates[0], coordinates[1], coordinates[0], coordinates[1] + (ship.getLength() - 1));
+                    Ship currentShip = createShip(board, ship, coordinates);
+                    board.addShip(currentShip);
                     break;
                 }
             }
@@ -78,6 +82,8 @@ public class BoardFactory {
                 if (direction.equals("v")) {
                     if (board.isPlacementOkay(coordinates[0], coordinates[1], coordinates[0] + (ship.getLength() - 1), coordinates[1])) {
                         board.setShip(coordinates[0], coordinates[1], coordinates[0] + (ship.getLength() - 1), coordinates[1]);
+                        Ship currentShip = createShip(board, ship, coordinates);
+                        board.addShip(currentShip);
                         break;
                     }
                     display.error("Place already taken!");
@@ -85,12 +91,24 @@ public class BoardFactory {
                 }
                 if (board.isPlacementOkay(coordinates[0], coordinates[1], coordinates[0], coordinates[1] + (ship.getLength() - 1))) {
                     board.setShip(coordinates[0], coordinates[1], coordinates[0], coordinates[1] + (ship.getLength() - 1));
+                    Ship currentShip = createShip(board, ship, coordinates);
+                    board.addShip(currentShip);
                     break;
                 }
                 display.error("Place already taken!");
             }
         }
         return board;
+    }
+
+    private static Ship createShip(Board board, ShipType ship, int[] coordinates) {
+        Ship createShip = new Ship();
+        for (int i = coordinates[0]; i <= coordinates[1]; i++) {
+            for (int j = coordinates[0] + (ship.getLength() - 1); j <= coordinates[1]; j++) {
+                createShip.addSquare(board.getOcean()[i][j]);
+            }
+        }
+        return createShip;
     }
 
 }

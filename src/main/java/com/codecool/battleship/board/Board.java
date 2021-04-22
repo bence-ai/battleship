@@ -10,6 +10,8 @@ import java.util.List;
  * All coordinates are [x][y] order!
  */
 public class Board {
+    protected List<Ship> ships = new ArrayList<>();
+
     // attributes
     private final Square[][] ocean;
 
@@ -78,8 +80,6 @@ public class Board {
         }
     }
 
-
-
     public boolean isShootOkay(int x, int y) {
         return ocean[x][y].GetSquareStatus() == SquareStatus.EMPTY ||
                 ocean[x][y].GetSquareStatus() == SquareStatus.SHIP;
@@ -133,5 +133,9 @@ public class Board {
             }
         }
         return false;
+    }
+
+    public void addShip(Ship ship) {
+        ships.add(ship);
     }
 }
