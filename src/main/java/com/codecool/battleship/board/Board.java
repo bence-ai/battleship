@@ -40,7 +40,9 @@ public class Board {
         int maxY = Math.min(endY + 1, this.ocean.length - 1);
         for (int i = minX; i <= maxX + 1; i++) {
             for (int j = minY; j <= maxY; j++) {
-                if (ocean[i][j].GetSquareStatus().getCharacter() != SquareStatus.EMPTY.getCharacter()) return false;
+                if (ocean[i][j].GetSquareStatus() != SquareStatus.EMPTY) {
+                    return false;
+                }
             }
         }
         return true;
