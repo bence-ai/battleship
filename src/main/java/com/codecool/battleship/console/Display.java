@@ -1,14 +1,20 @@
 package com.codecool.battleship.console;
 
 import com.codecool.battleship.Player;
-import com.codecool.battleship.board.Square;
+import com.codecool.battleship.board.ShipType;
 
 public class Display {
+    /**
+     * prints the main menu to the terminal window
+     */
     public void printMenu() {
         clearScreen();
         System.out.println("BATTLESHIP DESTROYER\n\n 1. Player vs. Player\n 2. Player vs. Computer\n 0. Exit");
     }
 
+    /**
+     * prints the main menu to the terminal window
+     */
     public void printSize() {
         clearScreen();
         System.out.println("BOARD SIZE\n\n 1. Small\n 2. Medium\n 3. Large\n 0. Back");
@@ -19,24 +25,9 @@ public class Display {
         System.out.println("NAME CREATION\n\nChoose your name [max 15 characters]: ");
     }
 
-    public void printBoard(Square[][] ocean) {
+    public void printBoard(Player player) {
         clearScreen();
-        StringBuilder board = new StringBuilder("  ");
-        String[] letters = {" A ", " B ", " C ", " D ", " E ", " F ", " G ", " H ", " I "};
-        String[] numbers = {" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9"};
-
-        for (int i = 0; i < ocean.length; i++) {
-            board.append(letters[i]);
-        }
-        int numberIndex = 0;
-        for (Square[] col: ocean) {
-            board.append("\n").append(numbers[numberIndex++]);
-            for (Square cell: col) {
-                board.append(" ").append(cell.GetSquareStatus()).append(" ");
-            }
-        }
-
-        System.out.println(board);
+        System.out.println(player.boardToString());
     }
 
     public void printRound(Player player) {
@@ -60,5 +51,13 @@ public class Display {
     public void error(String message) {
         System.out.println(message);
         System.out.println("Try again: ");
+    }
+
+    public void askCoordinate(ShipType ship) {
+        System.out.println("Please provide your " + ship.getLength() + " long ship start coordinate");
+    }
+
+    public void askDirection() {
+        System.out.println("Vertical or horizontal? ");
     }
 }

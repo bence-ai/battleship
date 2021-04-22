@@ -1,6 +1,5 @@
 package com.codecool.battleship.console;
 
-import java.lang.reflect.Type;
 import java.util.Scanner;
 
 public class Input {
@@ -60,7 +59,7 @@ public class Input {
 
     public int[] coordinateInput() {
         while (true) {
-            String coordinate = input.nextLine();
+            String coordinate = input.nextLine().toUpperCase();
             char letter = coordinate.charAt(0);
             String c2 = coordinate.substring(1);
             int row = letter - 65;
@@ -72,8 +71,18 @@ public class Input {
                 col = -1;
             }
             if (0 <= row && 0 <= col) {
+                System.out.println(row + ", " + col);
                 return new int[]{row, col};
             }
+        }
+    }
+
+    public String directionInput() {
+        while (true) {
+            String direction = input.nextLine();
+            if ("v".equals(direction) || "V".equals(direction)) return "v";
+            if ("h".equals(direction) || "H".equals(direction)) return "h";
+            display.error("Not a valid direction! [v(vertical) or h(horizontal)]");
         }
     }
 }

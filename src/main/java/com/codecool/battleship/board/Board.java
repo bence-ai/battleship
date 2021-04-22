@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Board {
     // attributes
-    private Square[][] ocean;
+    private final Square[][] ocean;
 
     // constructor
     public Board(int sideLength) {
@@ -39,8 +39,8 @@ public class Board {
         int maxX = Math.min(endX + 1, this.ocean.length - 1);
         int maxY = Math.min(endY + 1, this.ocean.length - 1);
         for (int i = minX; i <= maxX + 1; i++) {
-            for (int j = minY - 1; j <= maxY + 1; j++) {
-                if (ocean[i][j].GetSquareStatus() != SquareStatus.EMPTY.getCharacter()) return false;
+            for (int j = minY; j <= maxY; j++) {
+                if (ocean[i][j].GetSquareStatus().getCharacter() != SquareStatus.EMPTY.getCharacter()) return false;
             }
         }
         return true;
@@ -64,11 +64,50 @@ public class Board {
         return tiles;
     }
 
+    public void setShip(int startX, int startY, int endX, int endY) {
+        for (int i = startX; i <= endX; i++) {
+            for (int j = startY; j <= endY; j++) {
+                this.ocean[i][j].SetSquareStatus(SquareStatus.SHIP);
+            }
+        }
+    }
+
+
+
     public boolean isShootOkay(int x, int y) {
-        return true;
+        return ocean[x][y].GetSquareStatus() == SquareStatus.EMPTY || ocean[x][y].GetSquareStatus() == SquareStatus.SHIP;
     }
 
     public void markShoot(int x, int y) {
+        if (ocean[x][y].GetSquareStatus() == SquareStatus.EMPTY) {
+            ocean[x][y].SetSquareStatus(SquareStatus.MISS);
+        } else if (ocean[x][y].GetSquareStatus() == SquareStatus.SHIP) {
+            ocean[x][y].SetSquareStatus(SquareStatus.HIT);
+        }
+    }
 
+    public Square[][] getOcean() {
+        return ocean;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder board = new StringBuilder("  ");
+        String[] letters = {" A ", " B ", " C ", " D ", " E ", " F ", " G ", " H ", " I "};
+        String[] numbers = {" 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9"};
+
+        for (int i = 0; i < ocean.length; i++) {
+            board.append(letters[i]);
+        }
+        int numberIndex = 0;
+        for (Square[] col: ocean) {
+            board.append("\n").append(numbers[numberIndex++]);
+            for (Square cell: col) {
+                if (cell.GetSquareStatus() == SquareStatus.HIT || cell.GetSquareStatus() == SquareStatus.MISS)
+                board.append(" ").append(cell.GetSquareStatus()).append(" ");
+            }
+        }
+
+        return board.toString();
     }
 }
