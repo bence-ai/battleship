@@ -1,6 +1,7 @@
 package com.codecool.battleship;
 
 import com.codecool.battleship.board.Board;
+import com.codecool.battleship.board.BoardFactory;
 import com.codecool.battleship.board.Square;
 import com.codecool.battleship.board.SquareStatus;
 
@@ -9,9 +10,10 @@ import java.util.Random;
 
 public class ComputerMedium extends ComputerPlayer  {
 
-    public ComputerMedium(int size){
-        super(new Board(size));
+    public ComputerMedium(Board board, String name){
+        super(board, name);
     }
+
     @Override
     public void shoot(Board board) {
         Random rand = new Random();
@@ -61,7 +63,6 @@ public class ComputerMedium extends ComputerPlayer  {
         return sunkExceptionList;
     }
 
-
     public ArrayList<Square> predictionForHit(Board board) {
         ArrayList<Square> predictionForHit = new ArrayList<>();
         for (Square[] squareRows: board.getOcean()) {
@@ -85,17 +86,21 @@ public class ComputerMedium extends ComputerPlayer  {
         return predictionForHit;
     }
 
-
     public void basicMove(Board board) {
         Random rand = new Random();
         while (true){
             int randXCoordinate = rand.nextInt(7);
             int randYCoordinate = rand.nextInt(7);
-
             if (board.isShootOkay(randXCoordinate,randYCoordinate)) {
                 board.markShoot(randXCoordinate,randYCoordinate);
                 break;
             }
         }
+    }
+
+    public static Player withBoardSize(String name, int size) {
+        Board board = BoardFactory.randomPlacement(size);
+        return new ComputerMedium(board, name);
+
     }
 }
