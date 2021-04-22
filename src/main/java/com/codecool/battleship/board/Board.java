@@ -40,7 +40,7 @@ public class Board {
         int maxY = Math.min(endY + 1, this.ocean.length - 1);
         for (int i = minX; i <= maxX + 1; i++) {
             for (int j = minY; j <= maxY; j++) {
-                if (ocean[i][j].GetSquareStatus() != SquareStatus.EMPTY.getCharacter()) return false;
+                if (ocean[i][j].GetSquareStatus() != SquareStatus.EMPTY) return false;
             }
         }
         return true;
@@ -75,14 +75,14 @@ public class Board {
 
 
     public boolean isShootOkay(int x, int y) {
-        return ocean[x][y].GetSquareStatus() == SquareStatus.EMPTY.getCharacter() ||
-                ocean[x][y].GetSquareStatus() == SquareStatus.SHIP.getCharacter();
+        return ocean[x][y].GetSquareStatus() == SquareStatus.EMPTY ||
+                ocean[x][y].GetSquareStatus() == SquareStatus.SHIP;
     }
 
     public void markShoot(int x, int y) {
-        if (ocean[x][y].GetSquareStatus() == SquareStatus.EMPTY.getCharacter()) {
+        if (ocean[x][y].GetSquareStatus() == SquareStatus.EMPTY) {
             ocean[x][y].SetSquareStatus(SquareStatus.MISS);
-        } else if (ocean[x][y].GetSquareStatus() == SquareStatus.SHIP.getCharacter()) {
+        } else if (ocean[x][y].GetSquareStatus() == SquareStatus.SHIP) {
             ocean[x][y].SetSquareStatus(SquareStatus.HIT);
         }
     }
@@ -104,9 +104,9 @@ public class Board {
         for (Square[] col: ocean) {
             board.append("\n").append(numbers[numberIndex++]);
             for (Square cell: col) {
-                if (cell.GetSquareStatus() == SquareStatus.HIT.getCharacter() ||
-                        cell.GetSquareStatus() == SquareStatus.MISS.getCharacter())
-                board.append(" ").append(cell.GetSquareStatus()).append(" ");
+                if (cell.GetSquareStatus() == SquareStatus.HIT ||
+                        cell.GetSquareStatus() == SquareStatus.MISS)
+                board.append(" ").append(cell.GetGraphicsChar()).append(" ");
             }
         }
 
