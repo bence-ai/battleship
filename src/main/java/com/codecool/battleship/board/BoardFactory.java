@@ -80,6 +80,8 @@ public class BoardFactory {
                         board.setShip(coordinates[0], coordinates[1], coordinates[0] + (ship.getLength() - 1), coordinates[1]);
                         break;
                     }
+                    display.error("Place already taken!");
+                    continue;
                 }
                 if (board.isPlacementOkay(coordinates[0], coordinates[1], coordinates[0], coordinates[1] + (ship.getLength() - 1))) {
                     board.setShip(coordinates[0], coordinates[1], coordinates[0], coordinates[1] + (ship.getLength() - 1));

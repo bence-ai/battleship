@@ -34,11 +34,15 @@ public class Board {
      * @return false if ship cannot be legally placed at given coordinates, otherwise true
      */
     public boolean isPlacementOkay(int startX, int startY, int endX, int endY) {
+        if (ocean.length <= endX || ocean.length <= endY) {
+            return false;
+        }
+
         int minX = Math.max(startX - 1, 0);
         int minY = Math.max(startY - 1, 0);
         int maxX = Math.min(endX + 1, this.ocean.length - 1);
         int maxY = Math.min(endY + 1, this.ocean.length - 1);
-        for (int i = minX; i <= maxX + 1; i++) {
+        for (int i = minX; i <= maxX; i++) {
             for (int j = minY; j <= maxY; j++) {
                 if (ocean[i][j].GetSquareStatus() != SquareStatus.EMPTY) {
                     return false;
