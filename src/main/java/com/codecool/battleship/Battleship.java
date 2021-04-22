@@ -17,6 +17,7 @@ public class Battleship {
             display.printMenu();
             int mode = input.modeSelect();
             if (mode == 0) {
+                display.exit();
                 return;
             }
 

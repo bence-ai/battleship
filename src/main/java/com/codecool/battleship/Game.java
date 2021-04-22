@@ -44,6 +44,12 @@ public class Game {
             }
             playerChanger();
         }
-        display.printWinner(player);
+
+        try {
+            display.printWinner(player);
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e){
+            display.error(e.toString());
+        }
     }
 }

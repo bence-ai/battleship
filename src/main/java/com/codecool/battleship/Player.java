@@ -19,7 +19,6 @@ public class Player {
 
     public static Player withBoardSize(String name, int size) {
         Board board = BoardFactory.manualPlacement(size);
-
         return new Player(board, name);
     }
 
@@ -31,7 +30,7 @@ public class Player {
      */
     public void shoot(Board board) {
         while (true) {
-            int[] shootInput = input.coordinateInput();
+            int[] shootInput = input.coordinateInput(board.getOcean().length);
             if (board.isShootOkay(shootInput[0], shootInput[1])) {
                 board.markShoot(shootInput[0], shootInput[1]);
                 break;
