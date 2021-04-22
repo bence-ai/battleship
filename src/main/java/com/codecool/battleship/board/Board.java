@@ -103,7 +103,7 @@ public class Board {
 
     @Override
     public String toString() {
-        StringBuilder board = new StringBuilder("   ");
+        StringBuilder board = new StringBuilder("  ");
         String[] letters = {"1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣"};
         String[] numbers = {"🅰", "🅱", "🅲", "🅳", "🅴", "🅵", "🅶", "🅷", "🅸"};
 
@@ -119,13 +119,6 @@ public class Board {
                 } else {
                     board.append(SquareStatus.EMPTY.getCharacter());
                 }
-            }
-        }
-
-        for (Ship ship: ships) {
-            board.append("\n");
-            for (Square tile : ship.getTiles()) {
-                board.append(tile.getX()).append(", ").append(tile.getY());
             }
         }
 
