@@ -77,7 +77,8 @@ public class Board {
 
 
     public boolean isShootOkay(int x, int y) {
-        return ocean[x][y].GetSquareStatus() == SquareStatus.EMPTY || ocean[x][y].GetSquareStatus() == SquareStatus.SHIP;
+        return ocean[x][y].GetSquareStatus() == SquareStatus.EMPTY ||
+                ocean[x][y].GetSquareStatus() == SquareStatus.SHIP;
     }
 
     public void markShoot(int x, int y) {
@@ -111,5 +112,19 @@ public class Board {
         }
 
         return board.toString();
+    }
+
+    /**
+     *Checks the status of the squares on the board, and return true if find SHIP.
+     */
+    public boolean isAlive() {
+        for (Square[] row: ocean) {
+            for (Square cell: row) {
+                if (cell.GetSquareStatus() == SquareStatus.SHIP) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
