@@ -25,9 +25,8 @@ public class Ship {
     }
 
     public boolean isAlive() {
-        for (Square tile :
-                tiles) {
-            if (tile.GetSquareStatus() == SquareStatus.SHIP) {
+        for (Square tile : tiles) {
+            if (tile.GetSquareStatus() == SquareStatus.SHIP.getCharacter()) {
                 return true;
             }
         }
