@@ -32,13 +32,12 @@ public class Player {
     }
     /**
      * Player shoots, and change the shot Square status.
-     * TODO: Validation should be in the Board object, here just the shot itself!
      */
     public void shoot(Board board) {
         while (true) {
             int[] shootInput = input.coordinateInput();
-            if (board.isShootOkay(shootInput[1], shootInput[0])) {
-                board.markShoot(shootInput[1], shootInput[0]);
+            if (board.isShootOkay(shootInput[0], shootInput[1])) {
+                board.markShoot(shootInput[0], shootInput[1]);
                 break;
             }
         }

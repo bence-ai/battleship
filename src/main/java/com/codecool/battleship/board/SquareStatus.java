@@ -8,9 +8,9 @@ public enum SquareStatus {
     // Statuses
     SHIP (" ⚓️ "),
     MISS (" 🌊 "),
-    EMPTY (" 🔵 "),
+    EMPTY (" 🕳 "),
     HIT (" 🔥 "),
-    SUNK(" @");
+    SUNK (" 💢 ");
 
     SquareStatus(String displayCharacter) {
         this.displayCharacter = displayCharacter;
