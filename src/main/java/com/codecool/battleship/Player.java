@@ -14,7 +14,7 @@ import java.util.List;
 public class Player {
     protected Board board;
     protected String name;
-    List<Ship> ships = new ArrayList<Ship>();
+    List<Ship> ships = new ArrayList<>();
     Input input = new Input();
 
     public Player(Board board, String name) {
@@ -53,13 +53,7 @@ public class Player {
      * Check that player still have at least one Square ship.
      */
     public boolean isAlive() {
-        for (Ship ship: ships) {
-            // Need isAlive or something function in Ship class, what check the ship all tiles status and return true if ship.
-            if (ship.isAlive()) {
-                return true;
-            }
-        }
-        return false;
+        return board.isAlive();
     }
 
     public String boardToString() {
