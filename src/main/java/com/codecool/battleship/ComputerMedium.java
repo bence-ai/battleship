@@ -19,7 +19,7 @@ public class ComputerMedium extends ComputerPlayer  {
         while (true) {
             for (Square[] squareRows: board.getOcean()) {
                 for (Square square: squareRows) {
-                    if (square.GetSquareStatus() != SquareStatus.MISS) {
+                    if (square.GetSquareStatus() != SquareStatus.MISS.getCharacter()) {
                         
                     }
                 }
