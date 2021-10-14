@@ -1,29 +1,8 @@
 # Battleship OOP
 
-## Story
-
-> One of the reasons microcomputers progressed so fast is people are willing to
-> accept crashes. It's faster to build something and try it, even if it means
-> you'll have to rebuild later... If you spent too much time building and
-> massaging one vehicle, you don't learn anything.
-> <div style="text-align:right">John Carmack,<br>lead programmer of Doom (and more)</div>
 
 In this project your job is to implement the
 [Battleship game](https://en.wikipedia.org/wiki/Battleship_%28game%29) for two players. Use newly learned OOP practices.
-
-## What are you going to learn?
-
-You will practice the fundamentals of Object-Oriented Programming such as:
-- UML diagrams,
-- clean code,
-- encapsulation,
-- abstraction,
-- polymorphism,
-- inheritance,
-- enums
-- S and O principles from SOLID,
-- packaging in Java,
-- getters and setters in Java
 
 
 ## Tasks
@@ -65,7 +44,7 @@ You will practice the fundamentals of Object-Oriented Programming such as:
     - Class `Player` has field of type `List<Ship>`.
     - Class `Player` has a method `isAlive` to check if player has not lost all ships and returns true or false accordingly.
 
-7. [OPTIONAL] Implement `ComputerPlayer` class and it's methods.
+7.  Implement `ComputerPlayer` class and it's methods.
     - Class `ComputerPlayerEasy` takes random shots excluding already struck fields.
     - Class `ComputerPlayerNormal` also excludes fields around ships when taking random hits.
     - Class `ComputerPlayerNormal` shoots around a ship after hitting it to determine its direction.
@@ -97,23 +76,9 @@ You will practice the fundamentals of Object-Oriented Programming such as:
     - Enum `SquareStatus` represents possible square statuses (empty, ship, hit, missed).
     - Each `SquareStatus` has a unicode character that can be used to print it out. This unicode character is returned by a `SquareStatus.GetCharacter()` method.
 
-## General requirements
-
-None
 
 ## Hints
 
-- There is no skeleton code for this project (on purpose), just an empty file.
-  Try to create it from scratch.
-- Focus on features first, and refactor it at the end.
+- Run the Application in IntelliJ
 
-## Background materials
 
-- [UML diagrams](https://www.lucidchart.com/blog/types-of-UML-diagrams)
-- <i class="far fa-exclamation"></i> [S - Single Responsibility Principle](https://www.baeldung.com/java-single-responsibility-principle)
-- <i class="far fa-exclamation"></i> [O - Open/Closed Principle](https://www.baeldung.com/java-open-closed-principle)
-- <i class="far fa-exclamation"></i> [Inheritance in Java](https://www.w3schools.com/java/java_inheritance.asp)
-- <i class="far fa-exclamation"></i> [Abstraction in Java](https://www.w3schools.com/java/java_abstract.asp)
-- <i class="far fa-exclamation"></i> [Polymorphism in Java](https://www.w3schools.com/java/java_polymorphism.asp)
-- <i class="far fa-exclamation"></i> [Getters and Setters in Java](https://www.w3schools.com/java/java_encapsulation.asp)
-- [Tips on Battleship strategy](https://www.wikihow.com/Win-at-Battleship)
